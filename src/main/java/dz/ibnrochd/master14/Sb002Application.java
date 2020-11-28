@@ -1,6 +1,7 @@
 package dz.ibnrochd.master14;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,11 +12,13 @@ import dz.ibnrochd.master14.dao.ConsultationRepository;
 import dz.ibnrochd.master14.dao.PatientRepository;
 import dz.ibnrochd.master14.dao.RendezVousRepository;
 import dz.ibnrochd.master14.dao.TraitementRepository;
+import dz.ibnrochd.master14.model.Consultation;
 import dz.ibnrochd.master14.model.LigneConsultation;
 import dz.ibnrochd.master14.model.Patient;
+import dz.ibnrochd.master14.model.Traitement;
 
 @SpringBootApplication
-public class Sb002Application implements CommandLineRunner {
+public class Sb002Application<patient> implements CommandLineRunner {
 	
 	@Autowired
 	PatientRepository patientRepository;
@@ -34,21 +37,31 @@ public class Sb002Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO : récupérer la liste de tous les patients puis afficher leurs noms
-		patientRepository.findAll();
+		 
+		List<Patient> p=patientRepository.findAll();
+		 System.out.println(p);
 		
 		
 		// TODO : rechercher les patients ayant le nom "Yahi" puis leurs prénoms
 		
-		patientRepository.findByNom("Yahi");
+		List<Patient> pat=patientRepository.findByNom("Yahi");
+		System.out.println(pat);
 		// TODO : créer un nouveau patient (valeurs au choix)  PUIS enregistrer-le
        
-		patientRepository.save(new Patient(50,"Mohamadi","Mohamed","Male",new Date (28/03/1994),"0555","Blida"));
+		Patient Pati=new Patient(50,"Mohamadi","Mohamed","Male",new Date (28/03/1994),"0555","Blida");
+		patientRepository.save(Pati);
+		
 				
 		// TODO : rechercher la consultation ayant id=3 
-		consultationRpository.findById(3);
+		
+		List<Consultation> c=consultationRpository.findById(3);
+		System.out.println(c);
 
 		// TODO : parcourir les lignes de la consultation trouvée et afficher les noms des médicaments
-		traitementRepository.findAll();
+		
+		List<Traitement> t=traitementRepository.findAll();
+		System.out.println(t);
+		
 	}
 
 }
