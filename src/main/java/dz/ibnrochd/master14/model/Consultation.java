@@ -29,51 +29,69 @@ public class Consultation implements Serializable {
 
 	@Column(name = "motif", nullable = false, length = 255)
     private String motif; 
+	
 	@Column(name = "date_consultation", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date date_consultation;
-	@OneToMany(mappedBy = "Consultation")
-    private List<LigneConsultation> Ligneconsultations = new ArrayList<>();
 	
-	 @ManyToOne()
-	    @JoinColumn(name = "id_patient", nullable = false)
-	    private Patient patient;
+	@OneToMany(mappedBy = "consultation")
+    private List<LigneConsultation> ligneconsultations = new ArrayList<>();
+	
+	@ManyToOne()
+	@JoinColumn(name = "id_patient", nullable = false)
+	private Patient patient;
 	 
-	public Consultation () {
+	public Consultation() {
 		
-	} 
-	public Consultation (int id, String motif, Date date_consultation) {
-		this.id=id;
-		this.motif=motif;
-		this.date_consultation=date_consultation;
 	}
-	 public int getId() {
-			return id;
-		}
 
-		public void setId(int id) {
-			this.id = id;
-		}
-		public String getMotif() {
-			return motif;
-		}
+	public Consultation(int id, String motif, Date date_consultation, Patient patient) {
+		super();
+		this.id = id;
+		this.motif = motif;
+		this.date_consultation = date_consultation;
+		this.patient = patient;
+	}
 
-		public void setMotif(String motif) {
-			this.motif = motif;
-		}
-		public Patient getPatient() {
-			return patient;
-		}
+	public int getId() {
+		return id;
+	}
 
-		public void setPatient(Patient patient) {
-			this.patient = patient;
-		}
-		public List<LigneConsultation> getLigneConsultations() {
-			return Ligneconsultations;
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public void setLigneConsultation(List<LigneConsultation> Ligneconsultations) {
-			this.Ligneconsultations = Ligneconsultations;
-		}
+	public String getMotif() {
+		return motif;
+	}
 
+	public void setMotif(String motif) {
+		this.motif = motif;
+	}
+
+	public Date getDate_consultation() {
+		return date_consultation;
+	}
+
+	public void setDate_consultation(Date date_consultation) {
+		this.date_consultation = date_consultation;
+	}
+
+	public List<LigneConsultation> getLigneconsultations() {
+		return ligneconsultations;
+	}
+
+	public void setLigneconsultations(List<LigneConsultation> ligneconsultations) {
+		this.ligneconsultations = ligneconsultations;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	
+	
 }

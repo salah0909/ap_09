@@ -12,6 +12,5 @@ import dz.ibnrochd.master14.model.Consultation;
 
 @Repository
 public interface ConsultationRepository extends JpaRepository<Consultation, Integer> {
-
 	List<Consultation> findById(int Id);
 }

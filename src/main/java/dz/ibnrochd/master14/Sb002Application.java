@@ -9,11 +9,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import dz.ibnrochd.master14.dao.ConsultationRepository;
+import dz.ibnrochd.master14.dao.LigneConsultationRepository;
 import dz.ibnrochd.master14.dao.PatientRepository;
 import dz.ibnrochd.master14.dao.RendezVousRepository;
 import dz.ibnrochd.master14.dao.TraitementRepository;
 import dz.ibnrochd.master14.model.Consultation;
-import dz.ibnrochd.master14.model.LigneConsultation;
 import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.Traitement;
 
@@ -22,10 +22,14 @@ public class Sb002Application<patient> implements CommandLineRunner {
 	
 	@Autowired
 	PatientRepository patientRepository;
+	@Autowired
 	ConsultationRepository consultationRpository;
+	@Autowired
 	RendezVousRepository rendezVousRepository;
+	@Autowired
 	TraitementRepository traitementRepository;
-	LigneConsultation ligneConsultationRepository;
+	@Autowired
+	LigneConsultationRepository ligneConsultationRepository;
 	
 	// TODO : déclarer les autres repository de la même façon que PatientRepository
 	
@@ -48,7 +52,8 @@ public class Sb002Application<patient> implements CommandLineRunner {
 		System.out.println(pat);
 		// TODO : créer un nouveau patient (valeurs au choix)  PUIS enregistrer-le
        
-		Patient Pati=new Patient(50,"Mohamadi","Mohamed","Male",new Date (28/03/1994),"0555","Blida");
+		                                           // sexe = varchar(1)
+		Patient Pati=new Patient(0,"Mohamadi","Mohamed","M",new Date (28/03/1994),"0555","Blida");
 		patientRepository.save(Pati);
 		
 				

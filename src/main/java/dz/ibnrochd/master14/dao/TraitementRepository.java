@@ -14,6 +14,6 @@ import dz.ibnrochd.master14.model.Traitement;
 @Repository
 public interface TraitementRepository extends JpaRepository<Traitement, Integer> {
 	List<Traitement> findByNom(String Nom);
-	List<Traitement> findAll();
+	
 
 }
